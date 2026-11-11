@@ -625,8 +625,14 @@ const RelationsInput = ({
        *
        */
       onChange(relation);
+
+      /**
+       * The search term was only used to find this relation; reset it so reopening
+       * the dropdown lists the remaining available relations.
+       */
+      setSearchParams((s) => ({ ...s, _q: '', page: 1 }));
     },
-    [data, formatMessage, onChange, toggleNotification]
+    [data, formatMessage, onChange, toggleNotification, setSearchParams]
   );
 
   const relation = React.useMemo(
